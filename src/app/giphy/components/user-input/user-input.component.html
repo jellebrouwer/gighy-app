@@ -1,7 +1,7 @@
 <div class="user-input">
 
   <form class="user-input__form" (ngSubmit)="onSubmit()" #searchForm="ngForm">
-    <input id="search" name="search" class="user-input__search" required appForbiddenWords="bob"
+    <input id="search" name="search" class="user-input__search" required [appForbiddenWords]="forbiddenWords"
       [(ngModel)]="searchInput" #search="ngModel" placeholder="Search..." autocomplete="off">
     <button type="submit" class="user-input__button" [disabled]="!searchForm.form.valid">Submit</button>
   </form>
@@ -11,7 +11,7 @@
       Enter somehting to search.
     </div>
     <div *ngIf="search.errors.forbiddenWords">
-      Oh my god! No swearing please.
+      Oh my god! You can't say {{search.errors.forbiddenWords.value}}
     </div>
   </div>
 

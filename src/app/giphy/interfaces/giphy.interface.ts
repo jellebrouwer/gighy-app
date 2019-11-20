@@ -2,6 +2,8 @@ export interface IGif {
   images: {
     fixed_width: {
       url: string;
+      width: string;
+      height: string;
     },
   };
 }
