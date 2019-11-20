@@ -1,0 +1,21 @@
+<div class="user-input">
+
+  <form class="user-input__form" (ngSubmit)="onSubmit()" #searchForm="ngForm">
+    <input id="search" name="search" class="form-control" required minlength="4" appForbiddenName="bob"
+      [(ngModel)]="searchInput" #search="ngModel">
+    <button type="submit" class="btn btn-success" [disabled]="!searchForm.form.valid">Submit</button>
+  </form>
+
+  <div *ngIf="search.invalid && (search.dirty || search.touched)" class="user-input__validation">
+    <div *ngIf="search.errors.required">
+      Name is required.
+    </div>
+    <div *ngIf="search.errors.minlength">
+      Name must be at least 4 characters long.
+    </div>
+    <div *ngIf="search.errors.forbiddenName">
+      Name cannot be Bob.
+    </div>
+  </div>
+
+</div>

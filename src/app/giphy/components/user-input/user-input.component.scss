@@ -1,0 +1,13 @@
+.user-input {
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+
+  &_validation {
+    text-align: center;
+  }
+
+}
