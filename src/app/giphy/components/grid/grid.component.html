@@ -1,5 +1,6 @@
 <ul class="grid">
-  <li *ngFor='let gif of gifs'>
+  <li class="card" *ngFor='let gif of gifs' [style.height.px]="gif.images.fixed_width.height"
+    [style.width.px]="gif.images.fixed_width.width" [style.background-color]="'#ebebeb'">
     <img [src]="gif.images.fixed_width.url" />
   </li>
 </ul>

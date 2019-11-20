@@ -1,20 +1,17 @@
 <div class="user-input">
 
   <form class="user-input__form" (ngSubmit)="onSubmit()" #searchForm="ngForm">
-    <input id="search" name="search" class="form-control" required minlength="4" appForbiddenName="bob"
-      [(ngModel)]="searchInput" #search="ngModel">
-    <button type="submit" class="btn btn-success" [disabled]="!searchForm.form.valid">Submit</button>
+    <input id="search" name="search" class="user-input__search" required appForbiddenWords="bob"
+      [(ngModel)]="searchInput" #search="ngModel" placeholder="Search..." autocomplete="off">
+    <button type="submit" class="user-input__button" [disabled]="!searchForm.form.valid">Submit</button>
   </form>
 
   <div *ngIf="search.invalid && (search.dirty || search.touched)" class="user-input__validation">
     <div *ngIf="search.errors.required">
-      Name is required.
+      Enter somehting to search.
     </div>
-    <div *ngIf="search.errors.minlength">
-      Name must be at least 4 characters long.
-    </div>
-    <div *ngIf="search.errors.forbiddenName">
-      Name cannot be Bob.
+    <div *ngIf="search.errors.forbiddenWords">
+      Oh my god! No swearing please.
     </div>
   </div>
 

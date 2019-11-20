@@ -6,8 +6,31 @@
     margin: 20px;
   }
 
-  &_validation {
+  &__validation {
     text-align: center;
+  }
+
+  &__search {
+    font-size: 18px;
+    color: #5f5f5f;
+    outline: none;
+    width: 100%;
+    max-width: 300px;
+    background-color: #ffffff;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #5f5f5f;
+    margin-right: 5px;
+  }
+
+  &__button {
+    font-size: 18px;
+    color: #5f5f5f;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #5f5f5f;
   }
 
 }
