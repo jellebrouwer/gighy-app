@@ -7,12 +7,9 @@
   </form>
 
   <div *ngIf="search.invalid && (search.dirty || search.touched)" class="user-input__validation">
-    <div *ngIf="search.errors.required">
-      Enter somehting to search.
-    </div>
-    <div *ngIf="search.errors.forbiddenWords">
-      Oh my god! You can't say {{search.errors.forbiddenWords.value}}
-    </div>
+    <app-notification *ngIf="search.errors.required" [message]="'Enter somehting to search.'"></app-notification>
+    <app-notification *ngIf="search.errors.forbiddenWords"
+      [message]="'Oh my god! You can\'t say ' + search.errors.forbiddenWords.value"></app-notification>
   </div>
 
 </div>

@@ -1,8 +1,9 @@
-<div class="giphy">
-  <app-user-input (search)="handleSearch($event)"></app-user-input>
-  <app-pagination></app-pagination>
-  <app-grid *ngIf="gifs$ | async as gifs ; else loading" [gifs]="gifs.data"></app-grid>
-  <ng-template #loading>
-    Loading gifs...
-  </ng-template>
-</div>
+<app-user-input (search)="handleSearch($event)"></app-user-input>
+<app-notification *ngIf="error" [message]="'Could not load GIFs'"></app-notification>
+<app-pagination></app-pagination>
+<app-grid *ngIf="gifs$ | async as gifs ; else loading">
+  <app-gif *ngFor='let gif of gifs.data' [gif]="gif"></app-gif>
+</app-grid>
+<ng-template #loading>
+  Loading gifs...
+</ng-template>

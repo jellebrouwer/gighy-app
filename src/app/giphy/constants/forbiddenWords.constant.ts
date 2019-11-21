@@ -3,5 +3,6 @@ export const forbiddenWords: string[] = [
   'asshole',
   'jesus',
   'cunt',
-  'bitch'
+  'bitch',
+  'suck',
 ];

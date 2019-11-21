@@ -13,6 +13,8 @@ import { GiphyModule } from './giphy/giphy.module';
     GiphyModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { GiphyService } from './services/giphy.service';
 import { of } from 'rxjs';
 
@@ -32,7 +32,7 @@ export class GiphyComponent implements OnInit {
     })
       .pipe(
         catchError((error) => {
-          this.error = error;
+          setTimeout(() => this.error = error);
           return of(null);
         })
       );

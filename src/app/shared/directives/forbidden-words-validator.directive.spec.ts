@@ -2,7 +2,6 @@ import { Component, DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ForbiddenValidatorDirective } from './forbidden-words-validator.directive';
-import { DebugContext } from '@angular/core/src/view';
 
 @Component({
   template: `
