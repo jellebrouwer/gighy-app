@@ -10,7 +10,7 @@ export interface IGif {
 
 export interface IGiphyServerResponse<T> {
   data: T[];
-  meta: {
+  meta?: {
     status: number;
     msg: string;
     response_id: string;

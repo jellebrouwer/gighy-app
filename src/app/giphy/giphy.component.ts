@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { GiphyService } from './services/giphy.service';
-import { of } from 'rxjs';
+import { IGiphyServerResponse, IGif } from './interfaces/giphy.interface';
+import { of, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-giphy',
@@ -10,8 +11,16 @@ import { of } from 'rxjs';
 })
 export class GiphyComponent implements OnInit {
 
-  public gifs$;
-  public error;
+  public gifs$: Observable<IGiphyServerResponse<IGif>>;
+  public error: string;
+
+  // Pagination
+  public totalCount: number;
+  public limit = 12;
+  public offset = 0;
+
+  // Cache search input
+  private searchInput = 'puppies';
 
   constructor(
     private giphyService: GiphyService,
@@ -22,16 +31,31 @@ export class GiphyComponent implements OnInit {
   }
 
   public handleSearch(searchInput) {
-    this.getGifs(searchInput);
+    this.searchInput = searchInput;
+    this.getGifs();
   }
 
-  private getGifs(searchInput: string = 'puppies') {
+  public handlePageChange(pageChange) {
+    if (pageChange === 'next') {
+      this.offset += this.limit;
+    } else {
+      this.offset -= this.limit;
+    }
+    this.getGifs();
+  }
+
+  private getGifs() {
     this.gifs$ = this.giphyService.search({
-      q: searchInput,
-      limit: 12,
+      q: this.searchInput,
+      limit: this.limit,
+      offset: this.offset
     })
       .pipe(
+        tap(res => {
+          this.totalCount = res.pagination.total_count;
+        }),
         catchError((error) => {
+          console.log(error);
           setTimeout(() => this.error = error);
           return of(null);
         })

@@ -1,3 +1,2 @@
-<p>
-  pagination works!
-</p>
+<button class="button" *ngIf="showPrevious" (click)="handlePageChange('previous')">Previous</button>
+<button class="button" *ngIf="showNext" (click)="handlePageChange('next')">Next</button>

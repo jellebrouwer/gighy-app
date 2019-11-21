@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { UserInputComponent } from './user-input.component';
 import { ForbiddenValidatorDirective } from '../../../shared/directives/forbidden-words-validator.directive';
@@ -15,7 +16,8 @@ describe('UserInputComponent', () => {
         UserInputComponent,
         ForbiddenValidatorDirective
       ],
-      imports: [FormsModule]
+      imports: [FormsModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
   }));
