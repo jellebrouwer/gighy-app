@@ -1,9 +1,13 @@
 .user-input {
 
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+
   &__form {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin-bottom: 20px;
   }
 
   &__validation {
@@ -15,7 +19,6 @@
     color: #5f5f5f;
     outline: none;
     width: 100%;
-    max-width: 300px;
     background-color: #ffffff;
     border-top: 0;
     border-left: 0;
