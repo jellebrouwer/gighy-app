@@ -51,4 +51,27 @@ describe('PaginationComponent', () => {
     });
   });
 
+  describe('handlePageChange()', () => {
+    beforeEach(() => {
+      component.ngOnChanges({
+        totalCount: { currentValue: 100 },
+        offset: { currentValue: 0 },
+        itemsPerPage: { currentValue: 12 },
+      });
+      fixture.detectChanges();
+    });
+
+    it('should emit the submited page action', () => {
+      const compiled = fixture.debugElement.nativeElement;
+      const buttons = compiled.querySelectorAll('.button');
+
+      component.pageChange
+        .subscribe((emittedPageChange) => {
+          expect(emittedPageChange).toBe('next');
+        });
+
+      buttons[0].click();
+    });
+  });
+
 });
