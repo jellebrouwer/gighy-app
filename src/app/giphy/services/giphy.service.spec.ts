@@ -21,7 +21,6 @@ describe('GiphyService', () => {
         GiphyService
       ]
     });
-    // Inject the http service and test controller for each test
     injector = getTestBed();
     service = injector.get(GiphyService);
     httpMock = TestBed.get(HttpTestingController);
@@ -40,10 +39,8 @@ describe('GiphyService', () => {
           }
         );
 
-      // Request URL:
       const req = httpMock.expectOne(url);
 
-      // Assert that the request is a GET.
       expect(req.request.method).toEqual('GET');
 
       req.flush({
@@ -63,10 +60,8 @@ describe('GiphyService', () => {
           }
         );
 
-      // Request URL:
       const req = httpMock.expectOne(url);
 
-      // Respond with mock error
       req.flush(errorMessage, { status: 500, statusText: 'Server error' });
     });
 

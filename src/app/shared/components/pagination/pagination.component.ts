@@ -21,12 +21,11 @@ export class PaginationComponent implements OnChanges {
     offset: null
   };
 
-  ngOnChanges(changes) {
+  public ngOnChanges(changes) {
     this.cache.totalCount = changes.totalCount ? changes.totalCount.currentValue : this.cache.totalCount;
     this.cache.itemsPerPage = changes.itemsPerPage ? changes.itemsPerPage.currentValue : this.cache.itemsPerPage;
     this.cache.offset = changes.offset ? changes.offset.currentValue : this.cache.offset;
     this.checkShowButtons();
-
   }
 
   public handlePageChange(page) {
@@ -35,7 +34,7 @@ export class PaginationComponent implements OnChanges {
 
   private checkShowButtons() {
     this.showNext = this.cache.totalCount > (this.cache.offset + this.cache.itemsPerPage);
-    this.showPrevious = this.cache.offset >= this.cache.itemsPerPage;
+    this.showPrevious = this.cache.totalCount > 0 && this.cache.offset >= this.cache.itemsPerPage;
   }
 
 }

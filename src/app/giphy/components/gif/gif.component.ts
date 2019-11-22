@@ -1,17 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-gif',
   templateUrl: './gif.component.html',
   styleUrls: ['./gif.component.scss']
 })
-export class GifComponent implements OnInit {
-
+export class GifComponent {
   @Input() gif;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

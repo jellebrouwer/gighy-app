@@ -94,4 +94,25 @@ describe('GiphyComponent', () => {
     });
   });
 
+  describe('handlePageChange()', () => {
+
+    describe('called with next', () => {
+      it('should increase the offset with the limit', () => {
+        component.handlePageChange('next');
+        fixture.detectChanges();
+        expect(component.offset).toBe(12);
+      });
+    });
+
+    describe('called with previous', () => {
+      it('should decrease the offset with the limit', () => {
+        component.offset = 12;
+        component.handlePageChange('previous');
+        fixture.detectChanges();
+        expect(component.offset).toBe(0);
+      });
+    });
+
+  });
+
 });

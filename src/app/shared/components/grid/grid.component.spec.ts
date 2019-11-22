@@ -20,7 +20,6 @@ describe('GridComponent', () => {
   });
 
   it('should render a grid', () => {
-    expect(component).toBeTruthy();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.grid')).toBeDefined();
   });

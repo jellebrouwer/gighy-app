@@ -32,17 +32,14 @@ export class GiphyComponent implements OnInit {
 
   public handleSearch(searchInput) {
     this.searchInput = searchInput;
+    // Reset pagination
     this.limit = 12;
     this.offset = 0;
     this.getGifs();
   }
 
   public handlePageChange(pageChange) {
-    if (pageChange === 'next') {
-      this.offset += this.limit;
-    } else {
-      this.offset -= this.limit;
-    }
+    this.handlePagination(pageChange);
     this.getGifs();
   }
 
@@ -61,6 +58,14 @@ export class GiphyComponent implements OnInit {
           return of(null);
         })
       );
+  }
+
+  private handlePagination(pageChange) {
+    if (pageChange === 'next') {
+      this.offset += this.limit;
+    } else {
+      this.offset -= this.limit;
+    }
   }
 
 }

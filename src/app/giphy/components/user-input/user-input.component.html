@@ -1,5 +1,4 @@
 <div class="user-input">
-
   <form class="user-input__form" (ngSubmit)="onSubmit()" #searchForm="ngForm">
     <input id="search" name="search" class="user-input__search" required [appForbiddenWords]="forbiddenWords"
       [(ngModel)]="searchInput" #search="ngModel" placeholder="Search..." autocomplete="off">
@@ -11,5 +10,4 @@
     <app-notification *ngIf="search.errors.forbiddenWords"
       [message]="'Oh my god! You can\'t say ' + search.errors.forbiddenWords.value"></app-notification>
   </div>
-
 </div>
