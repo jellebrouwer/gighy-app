@@ -1,0 +1,66 @@
+{
+  "expression": "/v1/gifs",
+  "method": "GET",
+  "name": "giphyAPI",
+  "isArray": false,
+  "responses": {
+    "search": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "data": [
+          {
+            "images": {
+              "fixed_width": {
+                "height": "200",
+                "url": "https://giphy.com/static/img/giphy_logo_square_social.png",
+                "width": "200"
+              }
+            }
+          },
+          {
+            "images": {
+              "fixed_width": {
+                "height": "200",
+                "url": "https://giphy.com/static/img/giphy_logo_square_social.png",
+                "width": "200"
+              }
+            }
+          },
+          {
+            "images": {
+              "fixed_width": {
+                "height": "200",
+                "url": "https://giphy.com/static/img/giphy_logo_square_social.png",
+                "width": "200"
+              }
+            }
+          },
+          {
+            "images": {
+              "fixed_width": {
+                "height": "200",
+                "url": "https://giphy.com/static/img/giphy_logo_square_social.png",
+                "width": "200"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "msg": "OK",
+          "response_id": "f7fbd44c916923f3425163bfb7889407d38a713c",
+          "status": 200
+        },
+        "pagination": {
+          "count": 4,
+          "offset": 0,
+          "total_count": 4
+        }
+      }
+    },
+    "AuthorizationError": {
+      "data": {},
+      "status": 401
+    }
+  }
+}

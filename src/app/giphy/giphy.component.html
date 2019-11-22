@@ -11,7 +11,7 @@
       <app-gif *ngFor='let gif of gifs.data' [gif]="gif"></app-gif>
     </app-grid>
     <ng-template #loading>
-      Loading gifs...
+      <app-loader></app-loader>
     </ng-template>
   </div>
 </div>

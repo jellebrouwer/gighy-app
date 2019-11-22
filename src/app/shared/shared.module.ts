@@ -5,6 +5,7 @@ import { ForbiddenValidatorDirective } from './directives/forbidden-words-valida
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { GridComponent } from '../shared/components/grid/grid.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { NotificationComponent } from './components/notification/notification.co
     PaginationComponent,
     GridComponent,
     NotificationComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { NotificationComponent } from './components/notification/notification.co
     PaginationComponent,
     GridComponent,
     NotificationComponent,
+    LoaderComponent,
   ]
 })
 export class SharedModule { }

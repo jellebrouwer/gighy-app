@@ -32,6 +32,8 @@ export class GiphyComponent implements OnInit {
 
   public handleSearch(searchInput) {
     this.searchInput = searchInput;
+    this.limit = 12;
+    this.offset = 0;
     this.getGifs();
   }
 
@@ -55,7 +57,6 @@ export class GiphyComponent implements OnInit {
           this.totalCount = res.pagination.total_count;
         }),
         catchError((error) => {
-          console.log(error);
           setTimeout(() => this.error = error);
           return of(null);
         })

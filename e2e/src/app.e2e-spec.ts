@@ -1,16 +1,19 @@
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
+declare const ngApimock: any;
 
-describe('workspace-project App', () => {
+describe('Giphy App', () => {
   let page: AppPage;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to giphy-app!');
+  it('should display GIFs by default', async () => {
+    const numberOfExpectedGIFs = 4;
+    await ngApimock.selectScenario('giphyAPI', 'search');
+    await page.navigateTo();
+    expect(page.getGIFs()).toBe(numberOfExpectedGIFs);
   });
 
   afterEach(async () => {

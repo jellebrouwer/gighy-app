@@ -1,0 +1,12 @@
+{
+  "/v1/gifs": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "logLevel": "info"
+  },
+  "/ngapimock": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "logLevel": "info"
+  }
+}
