@@ -5,4 +5,5 @@ export const forbiddenWords: string[] = [
   'cunt',
   'bitch',
   'suck',
+  'dick'
 ];

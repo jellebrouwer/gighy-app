@@ -2,6 +2,7 @@
   <header class='giphy__header'>
     <app-user-input (search)="handleSearch($event)"></app-user-input>
     <app-notification *ngIf="error" [message]="'Could not load GIFs'"></app-notification>
+    <app-notification *ngIf="totalCount === 0" [message]="'No GIFs found'"></app-notification>
     <app-pagination [totalCount]="totalCount" [itemsPerPage]="limit" [offset]="offset"
       (pageChange)="handlePageChange($event)">
     </app-pagination>

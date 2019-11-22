@@ -1,2 +1,7 @@
-<button class="button" *ngIf="showPrevious" (click)="handlePageChange('previous')">Previous</button>
-<button class="button" *ngIf="showNext" (click)="handlePageChange('next')">Next</button>
+<div class="pagination">
+  <button class="button" *ngIf="showPrevious" (click)="handlePageChange('previous')">Previous</button>
+  <button class="button" *ngIf="showNext" (click)="handlePageChange('next')">Next</button>
+  <p class="pagination__info" *ngIf="showNext">
+    {{1 + offset/ itemsPerPage}} from {{totalCount / itemsPerPage | number:'1.0-0'}}
+  </p>
+</div>
