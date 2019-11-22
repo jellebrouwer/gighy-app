@@ -130,7 +130,7 @@
         }
       }
     },
-    "AuthorizationError": {
+    "authorizationError": {
       "data": {},
       "status": 401
     }

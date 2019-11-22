@@ -9,30 +9,40 @@ describe('Giphy App', () => {
     page = new AppPage();
   });
 
-  describe('default scenario', () => {
+  describe('No errors scenario', () => {
+
     it('should display 12 GIFs by default', async () => {
       const numberOfExpectedGIFs = 12;
       await ngApimock.selectScenario('giphyAPI', 'search');
       await page.navigateTo();
       expect(page.getGIFs()).toBe(numberOfExpectedGIFs);
     });
-  });
 
-  describe('user uses bad language', () => {
-    it('should display a warning', async () => {
-      await ngApimock.selectScenario('giphyAPI', 'search');
-      await page.navigateTo();
-      const searchField = page.getSearchField();
-      await searchField.sendKeys('fuck');
-      expect(page.getNotificationText()).toEqual('Oh my god! You can\'t say fuck');
+    describe('user uses bad language', () => {
+      it('should display a warning', async () => {
+        await ngApimock.selectScenario('giphyAPI', 'search');
+        await page.navigateTo();
+        const searchField = page.getSearchField();
+        await searchField.sendKeys('fuck');
+        expect(page.getNotificationText()).toEqual('Oh my god! You can\'t say fuck');
+      });
+    });
+
+    afterEach(async () => {
+      // Assert that there are no errors emitted from the browser
+      const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+      expect(logs).not.toContain(jasmine.objectContaining({
+        level: logging.Level.SEVERE,
+      } as logging.Entry));
     });
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+  describe('Client error', () => {
+    it('should display an error notification', async () => {
+      await ngApimock.selectScenario('giphyAPI', 'authorizationError');
+      await page.navigateTo();
+      expect(page.getNotificationText()).toEqual('Could not load GIFs');
+    });
   });
+
 });
