@@ -1,11 +1,20 @@
-import { browser, by, element, ElementArrayFinder, ElementFinder } from 'protractor';
+import { browser, by, element } from 'protractor';
 
 export class AppPage {
-  navigateTo() {
+
+  public navigateTo() {
     return browser.get(browser.baseUrl) as Promise<any>;
   }
 
-  getGIFs() {
+  public getGIFs() {
     return element.all(by.css('.gif')).count() as Promise<number>;
+  }
+
+  public getSearchField() {
+    return element(by.css('#search'));
+  }
+
+  public getNotificationText() {
+    return element(by.css('.notification')).getText() as Promise<string>;
   }
 }
